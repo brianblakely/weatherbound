@@ -1,3 +1,6 @@
+// Dynamic HTML templates.
+// Data tokens denoted with `%`.
+
 export const compile = (template, data)=> {
   let merged = template;
 
@@ -10,14 +13,14 @@ export const compile = (template, data)=> {
 
 export const current = `
   <span class="city">%city</span>
-  <span class="condition">%condition</span>
+  <span class="condition" role="img" title="%conditionLabel">%conditionIcon</span>
   <span class="temp">%temp</span>
 `;
 
 export const day = `
   <li>
     <span class="day">%day</span>
-    <span class="condition">%condition</span>
+    <span class="condition" role="img" title="%conditionLabel">%conditionIcon</span>
     <span class="high">%high</span>
     <span class="low">%low</span>
   </li>
