@@ -8,8 +8,8 @@ import rain from './shaders/rain.fs';
 
 const pixi = new PIXI.Application({
   view: Dom.visual,
-  width: Dom.visual.offsetWidth/2,
-  height: Dom.visual.offsetHeight/2
+  width: Dom.visual.offsetWidth,
+  height: Dom.visual.offsetHeight
 });
 
 pixi.renderer.autoResize = true;
