@@ -2,11 +2,11 @@
 
 import * as Dom from './dom.js';
 import * as Template from './templates.js';
-import weather from './weather.js';
+import weatherData from './weather.js';
 import * as Convert from './convert.js';
 import forecast from './process.js';
 
-const render = (tempUnit, weather=weather)=> {
+const render = (tempUnit, weather=weatherData)=> {
   const current = weather.list[0],
         prediction = forecast(weather, tempUnit);
 
