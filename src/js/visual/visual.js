@@ -12,8 +12,10 @@ const pixi = new PIXI.Application({
   height: Dom.visual.offsetHeight
 });
 
-pixi.renderer.autoResize = true;
-pixi.renderer.resize(Dom.visual.offsetWidth, Dom.visual.offsetHeight);
+window.addEventListener(`resize`, ()=> {
+  pixi.renderer.autoResize = true;
+  pixi.renderer.resize(Dom.visual.offsetWidth, Dom.visual.offsetHeight);
+});
 
 const filter = new PIXI.Filter(null, rain);
 filter.apply = function(filterManager, input, output) {
