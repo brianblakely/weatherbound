@@ -14,7 +14,9 @@ const pixi = new PIXI.Application({
 
 window.addEventListener(`resize`, ()=> {
   pixi.renderer.autoResize = true;
-  pixi.renderer.resize(Dom.visual.offsetWidth, Dom.visual.offsetHeight);
+  pixi.renderer.resize(window.innerWidth, window.innerHeight);
+  graphics.drawRect(0, 0, window.innerWidth, window.innerHeight);
+  filter.uniforms.iResolution = [window.innerWidth, window.innerHeight];
 });
 
 const filter = new PIXI.Filter(null, rain);
