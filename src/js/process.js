@@ -21,6 +21,12 @@ const dt2day = (dt)=> {
   return dayLabels[date.getDay()];
 };
 
+const dt2hour = (dt)=> {
+  const date = new Date(dt*1000);
+  date.setTime(date.getTime() + date.getTimezoneOffset()*60*1000);
+  return date.getHours();
+};
+
 export const forecastHours = (data, tempUnit)=> {
   const hours = [];
 
@@ -98,10 +104,9 @@ const forecastLowHi = (data, tempUnit)=> {
 const forecastCondition = (data)=> {
   const conditions = [];
 
-  const now = data.list[0],
-        time = new Date(now.dt_txt);
+  const now = data.list[0];
 
-  if(time.getHours() > 12) {
+  if(dt2hour(now.dt) > 12) {
     conditions.push({
       label: now.weather[0].main,
       icon: conditionIcons[now.weather[0].main === `Clear` ? `Night` : now.weather[0].main]
