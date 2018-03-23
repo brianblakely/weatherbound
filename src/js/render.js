@@ -4,7 +4,7 @@ import * as Dom from './dom.js';
 import * as Template from './templates.js';
 import weatherData from './weather.js';
 import * as Convert from './convert.js';
-import forecast from './process.js';
+import forecast, {forecastHours} from './process.js';
 
 const render = (tempUnit, weather=weatherData)=> {
   const current = weather.list[0],
@@ -23,13 +23,30 @@ const render = (tempUnit, weather=weatherData)=> {
     }
   );
 
-  Dom.week.innerHTML = ``;
+  const hours = forecastHours(weather, tempUnit),
+        hourHTML = [];
+
+  for(const hour of hours) {
+    hourHTML.push(Template.compile(
+      Template.hour,
+      {
+        time: hour.time,
+        conditionLabel: hour.conditions.label,
+        conditionIcon: hour.conditions.icon,
+        temp: hour.temp
+      }
+    ));
+  }
+  Dom.hourly.innerHTML = hourHTML.join(``);
+
+  const weekHTML = [];
   for(const day of prediction) {
-    Dom.week.innerHTML += Template.compile(
+    weekHTML.push(Template.compile(
       Template.day,
       day
-    );
+    ));
   }
+  Dom.week.innerHTML = weekHTML.join(``);
 };
 
 export default render;

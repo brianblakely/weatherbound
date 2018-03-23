@@ -17,6 +17,14 @@ export const current = `
   <span class="temp">%temp&deg;</span>
 `;
 
+export const hour = `
+  <li>
+    <span class="time">%time</span>
+    <span class="condition" role="img" title="%conditionLabel">%conditionIcon</span>
+    <span class="temp">%temp&deg;</span>
+  </li>
+`;
+
 export const day = `
   <li>
     <span class="day">%day</span>

@@ -10,6 +10,7 @@ const dayLabels = [`Sunday`, `Monday`, `Tuesday`, `Wednesday`, `Thursday`, `Frid
         Snow: `❄️`,
         Atmosphere: `🌫️`,
         Clear: `🌞`,
+        Night: `🌜`,
         Clouds: `☁️`,
         Extreme: `☢️`
       };
@@ -18,6 +19,33 @@ const dt2day = (dt)=> {
   const date = new Date(dt*1000);
   date.setTime(date.getTime() + date.getTimezoneOffset()*60*1000);
   return dayLabels[date.getDay()];
+};
+
+export const forecastHours = (data, tempUnit)=> {
+  const hours = [];
+
+  for(const [index, item] of data.list.entries()) {
+    const time = item.dt_txt.split(` `)[1].split(`:`)[0];
+
+    hours.push({
+      time,
+      conditions: {
+        label: item.weather[0].main,
+        icon: conditionIcons[
+          Number(time) >= 18 && item.weather[0].main === `Clear`
+            ? `Night`
+            : item.weather[0].main
+        ]
+      },
+      temp: Convert.k2f(item.main.temp)
+    });
+
+    if(tempUnit === `c`) {
+      hours[index].temp = Convert.f2c(hours[index].temp);
+    }
+  }
+
+  return hours;
 };
 
 const forecastDays = (data)=> {
@@ -73,7 +101,7 @@ const forecastCondition = (data)=> {
   const now = data.list[0],
         time = new Date(now.dt_txt);
 
-  if(time.getHours() > 12) {
+  if(time.getHours() >= 18) {
     conditions.push({
       label: now.weather[0].main,
       icon: conditionIcons[now.weather[0].main === `Clear` ? `Night` : now.weather[0].main]
