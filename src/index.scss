@@ -1,9 +1,78 @@
+body {
+  margin: 0;
+  overflow: hidden;
+  color: #fff;
+}
+[role="img"] {
+  cursor: default;
+}
+
 main {
+  box-sizing: border-box;
   margin: 0 auto;
+  padding: 1rem;
   width: 100vw;
+  height: 100vh;
   max-width: 720px;
+  font-family: sans-serif;
 
   #current {
+    position: relative;
+    z-index: 1;
+    text-align: center;
 
+    span {
+      display: block;
+    }
+    .city {
+      font-size: 1.25rem;
+    }
+    .temp {
+      font-size: 2rem;
+    }
+  }
+
+  #week {
+    position: relative;
+    padding: 0;
+    list-style: none;
+    z-index: 1;
+
+    li {
+      font-size: 0;
+      span {
+        display: inline-block;
+        font-size: 1rem;
+
+        &.day {
+          width: 50%;
+        }
+        &.condition {
+          width: 25%;
+        }
+        &.high,
+        &.low {
+          width: 12.5%;
+        }
+      }
+    }
+
+    li:first-child {
+      .day::after {
+        content: 'Today';
+        padding-left: 1ch;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  #visual {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
   }
 }

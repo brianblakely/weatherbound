@@ -38,6 +38,10 @@ module.exports = {
         }, {
           loader: `sass-loader`
         }]
+      },
+      {
+        test: /\.(glsl|vs|fs)$/,
+        loader: `shader-loader`
       }
     ]
   },

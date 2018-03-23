@@ -2,4 +2,5 @@
 
 export const
       current = document.getElementById(`current`),
-      week = document.getElementById(`week`);
+      week = document.getElementById(`week`),
+      visual = document.getElementById(`visual`);

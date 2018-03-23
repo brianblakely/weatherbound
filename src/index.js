@@ -5,6 +5,7 @@
 import 'file-loader?name=[name].[ext]!./index.html';
 import './index.scss';
 
+import {  } from './js/visual/visual.js';
 import render from './js/render.js';
 
 render();
