@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --mode=development --colors --open",
     "test": "mocha",
-    "build": "webpack --mode=production --display-error-details"
+    "build": "npm test && webpack --mode=production --display-error-details"
   },
   "author": "Brian Blakely",
   "license": "MIT",
