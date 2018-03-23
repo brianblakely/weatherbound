@@ -13,8 +13,8 @@ export const compile = (template, data)=> {
 
 export const current = `
   <span class="city">%city</span>
-  <span class="condition" role="img" title="%conditionLabel">%conditionIcon</span>
-  <span class="temp">%temp</span>
+  <span class="condition">%conditionLabel</span>
+  <span class="temp">%temp&deg;</span>
 `;
 
 export const day = `
