@@ -45,6 +45,8 @@ navigator.geolocation.getCurrentPosition((position) => {
   console.info(`err`, err);
 
   render(tempUnit);
+}, {
+  timeout: 5000
 });
 
 
