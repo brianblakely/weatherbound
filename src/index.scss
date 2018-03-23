@@ -9,16 +9,39 @@ body {
 
 main {
   box-sizing: border-box;
+  position: relative;
   margin: 0 auto;
   padding: 1rem;
   width: 100vw;
   height: 100vh;
   max-width: 480px;
   font-family: sans-serif;
+  z-index: 1;
+
+  #unit {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 44px;
+    height: 44px;
+    text-align: center;
+    line-height: 44px;
+    font-size: 32px;
+    background: rgba(158,0,128,0.15);
+    color: rgba(255,255,255,0.5);
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 2;
+
+    transition: color 250ms ease-in-out;
+
+    &.active {
+      color: #fff;
+    }
+  }
 
   #current {
     position: relative;
-    z-index: 1;
     text-align: center;
 
     span {
@@ -36,7 +59,6 @@ main {
     position: relative;
     padding: 0;
     list-style: none;
-    z-index: 1;
 
     li {
       font-size: 0;
@@ -66,13 +88,13 @@ main {
       }
     }
   }
+}
 
-  #visual {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
-  }
+#visual {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
 }
