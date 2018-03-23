@@ -4,9 +4,9 @@
   "description": "Weather app for submission to BuildIt",
   "main": "./src/index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode=development --colors --open",
+    "start": "webpack-dev-server --mode development --colors --open",
     "test": "mocha",
-    "build": "npm test && webpack --mode=production --display-error-details"
+    "build": "npm test && webpack --mode production --display-error-details"
   },
   "author": "Brian Blakely",
   "license": "MIT",
