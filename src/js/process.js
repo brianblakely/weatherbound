@@ -101,7 +101,7 @@ const forecastCondition = (data)=> {
   const now = data.list[0],
         time = new Date(now.dt_txt);
 
-  if(time.getHours() >= 18) {
+  if(time.getHours() > 12) {
     conditions.push({
       label: now.weather[0].main,
       icon: conditionIcons[now.weather[0].main === `Clear` ? `Night` : now.weather[0].main]
