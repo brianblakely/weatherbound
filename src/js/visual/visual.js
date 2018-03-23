@@ -8,16 +8,11 @@ import rain from './shaders/rain.fs';
 
 const pixi = new PIXI.Application({
   view: Dom.visual,
-  width: Dom.visual.offsetWidth,
-  height: Dom.visual.offsetHeight
+  width: Dom.visual.offsetWidth/2,
+  height: Dom.visual.offsetHeight/2
 });
 
-window.addEventListener(`resize`, ()=> {
-  pixi.renderer.autoResize = true;
-  pixi.renderer.resize(window.innerWidth, window.innerHeight);
-  graphics.drawRect(0, 0, window.innerWidth, window.innerHeight);
-  filter.uniforms.iResolution = [window.innerWidth, window.innerHeight];
-});
+pixi.renderer.autoResize = true;
 
 const filter = new PIXI.Filter(null, rain);
 filter.apply = function(filterManager, input, output) {
