@@ -58,10 +58,10 @@ const forecastLowHi = (data, tempUnit)=> {
 
   for(const [day, {low, high}] of Object.entries(lowhi)) {
     lowhi[day].low = Convert.k2f(low);
-    tempUnit === `c` && (lowhi[day] = Convert.f2c(low));
+    tempUnit === `c` && (lowhi[day].low = Convert.f2c(lowhi[day].low));
 
     lowhi[day].high = Convert.k2f(high);
-    tempUnit === `c` && (lowhi[day] = Convert.f2c(high));
+    tempUnit === `c` && (lowhi[day].high = Convert.f2c(lowhi[day].high));
   }
 
   return lowhi;
