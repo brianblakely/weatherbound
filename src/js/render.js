@@ -6,7 +6,7 @@ import weather from './weather.js';
 import * as Convert from './convert.js';
 import forecast from './process.js';
 
-const render = (tempUnit)=> {
+const render = (tempUnit, weather=weather)=> {
   const current = weather.list[0],
         prediction = forecast(weather, tempUnit);
 
